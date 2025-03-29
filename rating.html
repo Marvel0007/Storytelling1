@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Rating Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        img {
+            width: 200px;
+            border-radius: 5px;
+        }
+        .stars input {
+            display: none;
+        }
+        .stars label {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .stars input:checked ~ label {
+            color: gold;
+        }
+        .stars label:hover, .stars label:hover ~ label {
+            color: gold;
+        }
+        .review-box {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .notification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Rate This Book</h2>
+        <img src="https://images.cdn.kukufm.com/w:480/f:webp/q:85/https://images.cdn.kukufm.com/f:webp/https://s3.ap-south-1.amazonaws.com/kukufm/channel_icons/7ee2df007d7a4961947bd5b76e8e469d.png" alt="Book Cover">
+        <h3>IMPROVE YOUR DIGESTIVE SYSTEM WITH YOGA</h3>
+        <p>A brief description of the book goes here. Enjoy reading and rate below!</p>
+        
+        <div class="stars">
+            <input type="radio" name="star" id="star5"><label for="star5">★</label>
+            <input type="radio" name="star" id="star4"><label for="star4">★</label>
+            <input type="radio" name="star" id="star3"><label for="star3">★</label>
+            <input type="radio" name="star" id="star2"><label for="star2">★</label>
+            <input type="radio" name="star" id="star1"><label for="star1">★</label>
+        </div>
+
+        <div class="review-box">
+            <h3>Write a Review</h3>
+            <textarea id="review-text" placeholder="Write your review here..."></textarea>
+            <br>
+            <button onclick="submitReview()">Submit Review</button>
+            <div id="notification" class="notification">Review submitted successfully!</div>
+        </div>
+    </div>
+
+    <script>
+        function submitReview() {
+            var reviewText = document.getElementById("review-text").value;
+            if (reviewText.trim() !== "") {
+                var notification = document.getElementById("notification");
+                notification.style.display = "block";
+                setTimeout(() => {
+                    notification.style.display = "none";
+                }, 3000);
+            } else {
+                alert("Please write a review before submitting.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Summary</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            background: url(lifestyle-scene-with-people-doing-regular-tasks-anime-style.jpg) no-repeat center center/cover;
+            
+        }
+        .top-div {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 75px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4500;
+            margin-top: 200px;
+        }
+        .image-container {
+            width: 60%;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            width: 60%;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        p {
+            color: #ff4500;
+            font-size: 18px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #readButton { background-color: #4CAF50; color: white; }
+        #pauseButton { background-color: #f39c12; color: white; }
+        #resumeButton { background-color: #3498db; color: white; }
+
+        .content-container {
+            border-left: 2px solid #ff4500;
+            text-align: left;
+        }
+        .review-section {
+            margin-top: 20px;
+            width: 90%;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .review-section textarea {
+            width: 90%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        .review-section input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .review-section button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-div">Welcome to the Story Page</div>
+    <div class="image-container">
+        
+    <div class="container">
+        <h1>Rich Dad Poor Dad</h1>
+    <p id="summary">
+        The story begins with the author as a young boy, observing the contrasting financial mindsets and behaviors of his own father, the "poor dad," and a friend's father, the "rich dad." The poor dad held a high position in education and emphasized the importance of academic success, job security, and living within one's means. The rich dad, a successful entrepreneur, believed in building assets, investing wisely, and acquiring financial knowledge. It describes how the rich dad teaches the author and his friend finance through practical lessons.
+        <br><br>
+        Throughout the book, Kiyosaki shares anecdotes and conversations that he had with the rich dad, who guided him on various aspects of money, wealth creation, and financial independence. He learns valuable lessons about the difference between assets and liabilities, the power of financial education, and the importance of taking calculated risks. Kiyosaki emphasizes the significance of acquiring assets that generate income, such as real estate and businesses, as opposed to liabilities that drain money, such as excessive consumer debt and unnecessary expenses. He introduces concepts like the cash flow quadrant, which categorizes individuals as employees, self-employed, business owners, or investors, highlighting the advantages and disadvantages of each quadrant.
+        <br><br>
+        The book also delves into the mindset and beliefs around money, discussing the importance of developing a positive relationship with wealth and overcoming limiting beliefs. Kiyosaki stresses the need for financial literacy and encourages readers to take control of their financial destinies by seeking out opportunities, learning from mistakes, and continuously educating themselves about money.
+    </p>
+
+    <button id="readButton">Read Aloud</button>
+    <button id="pauseButton">Pause</button>
+    <button id="resumeButton">Resume</button>
+
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+        let isPaused = false;
+        speech.text = document.getElementById('summary').innerText;
+        
+        document.getElementById('readButton').addEventListener('click', function() {
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(speech);
+        });
+
+        document.getElementById('pauseButton').addEventListener('click', function() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+            }
+        });
+
+        document.getElementById('resumeButton').addEventListener('click', function() {
+            if (isPaused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+            }
+        });
+
+        
+    </script>
+
+<div class="review-section">
+    <h2>Leave a Review</h2>
+    <textarea placeholder="Write your review here..."></textarea>
+    <label for="rating">Rating (%): </label>
+    <input type="number" id="rating" min="0" max="100" step="1" placeholder="0-100">
+    <button>Submit Review</button>
+</div>
+
+</body>
+</html>

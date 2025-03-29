@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+</head>
+<body>
+    <h1>Rich Dad Poor Dad Summary</h1>
+    <p id="summary">
+        The story begins with the author as a young boy, observing the contrasting financial mindsets and behaviors of his own father, the "poor dad," and a friend's father, the "rich dad." The poor dad held a high position in education and emphasized the importance of academic success, job security, and living within one's means. The rich dad, a successful entrepreneur, believed in building assets, investing wisely, and acquiring financial knowledge. It describes how the rich dad teaches the author and his friend finance through practical lessons.
+        <br><br>
+        Throughout the book, Kiyosaki shares anecdotes and conversations that he had with the rich dad, who guided him on various aspects of money, wealth creation, and financial independence. He learns valuable lessons about the difference between assets and liabilities, the power of financial education, and the importance of taking calculated risks. Kiyosaki emphasizes the significance of acquiring assets that generate income, such as real estate and businesses, as opposed to liabilities that drain money, such as excessive consumer debt and unnecessary expenses. He introduces concepts like the cash flow quadrant, which categorizes individuals as employees, self-employed, business owners, or investors, highlighting the advantages and disadvantages of each quadrant.
+        <br><br>
+        The book also delves into the mindset and beliefs around money, discussing the importance of developing a positive relationship with wealth and overcoming limiting beliefs. Kiyosaki stresses the need for financial literacy and encourages readers to take control of their financial destinies by seeking out opportunities, learning from mistakes, and continuously educating themselves about money.
+    </p>
+    <button onclick="textToSpeech()">Read Aloud</button>
+
+    <script>
+        function textToSpeech() {
+            const synth = window.speechSynthesis;
+            const text = document.getElementById("summary").innerText;
+            if (!synth.speaking) {
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.0;
+                utterance.volume = 1.0;  
+                synth.speak(utterance);
+            }
+        }
+    </script>
+</body>
+</html>
